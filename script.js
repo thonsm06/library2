@@ -38,15 +38,22 @@ function setReadStatus(bookDiv) {
         book.textContent = "read";
     }
 }
-function removeBookFromArray(event) {
-    const index = library.findIndex((book) => {
-        return book.id === event.target.getAttribute("data-id");
+
+const container = document.querySelector(".content-container");
+container.addEventListener("click", (event) => {
+    const target = event.target;
+    switch(target) {
+        //case: 
+    }
+    const bookIndexInLibrary = library.findIndex((book) => {
+        return book.id === target.getAttribute("data-id");
     });
-    if (index !== -1) {
-       library.splice(index, 1);
-        
-    };
-}
+    if (bookIndexInLibrary !== -1) {
+        library.splice(bookIndexInLibrary, 1);
+        target.parentElement.remove();
+    }
+});
+
 function displayBooks(library) {
     let i = 1; //track book being display
     const contents = document.querySelector(".content-container");
@@ -64,23 +71,6 @@ function displayBooks(library) {
             const remove = document.createElement("button");
             remove.textContent = "Remove";
             remove.setAttribute("data-id", book.id);
-            remove.addEventListener("click", removeBookFromArray) ;
-            console.log(library);
-                // const bookIndexInLibrary = library.findIndex((this) => {
-                //     return this.id === e.target.getAttribute("data-id");
-                // })
-            
-            // remove.addEventListener("click", (event) => {
-            //     const bookIndexInLibrary = library.findIndex((b) => {
-            //         return b.id === event.target.getAttribute("data-id");
-            //     });
-            //     if (bookIndexInLibrary !== -1) {
-            //         //console.log(`index: ${bookIndexInLibrary}`);
-            //         library.splice(bookIndexInLibrary, 1);
-            //         bookCard.remove();
-            //         //console.log(library);
-            //     }
-            // })
 
             const read = document.createElement("div");
             read.classList.toggle(`read-${i}`);
@@ -128,8 +118,7 @@ add.addEventListener("click", (event) => {
     addBookToLibrary(title, author, pages, id, read);
     displayBooks(library);
     event.preventDefault();
-
-    //console.log(library);
+    console.log(library);
 });
 
 
