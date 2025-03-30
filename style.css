@@ -14,10 +14,10 @@ body {
     gap: 1rem;
 }
 
-[class*="read"][value="false"] {
+.read[value="false"] {
     background-color: darkblue;
 }
-[class*="read"][value="true"] {
+.read[value="true"] {
     background-color: green;
 }
 
