@@ -1,22 +1,41 @@
 const library = [];
 
-function CreateBook(title, author, pages, id, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.id = id;
-    this.read = read;
-}
-CreateBook.prototype.toggleRead = function() {
-    if (this.read == false) {
-        this.read = true;
-        return true;
-    } else {
-        this.read = false;
-        return false;
-    }
-};
+// function CreateBook(title, author, pages, id, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.id = id;
+//     this.read = read;
+// }
+// CreateBook.prototype.toggleRead = function() {
+//     if (this.read == false) {
+//         this.read = true;
+//         return true;
+//     } else {
+//         this.read = false;
+//         return false;
+//     }
+// };
 
+
+class CreateBook {
+    constructor(title, author, pages, id, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.id = id;
+        this.read = read;
+    }
+    toggleRead() {
+        if (this.read == false) {
+            this.read = true;
+            return true;
+        } else {
+            this.read = false;
+            return false;
+        }
+    }
+}
 function addBookToLibrary(title, author, pages, id, read) {
     library.push(new CreateBook(title, author, pages, id, read));
 }
